@@ -1,6 +1,7 @@
 html, body, div#root {
   width: 100%;
   height: 100%;
+  overflow-x: hidden;
 }
 
 main {
@@ -13,13 +14,26 @@ main {
   height: 100%;
 }
 
-.bg-landing {
-  background-image: url('../assets/bg-landing.jpg');
-  background-size: cover;
+.brand-logo-big {
+  font-size: 24px;
+  font-family: monospace, monospace;
 }
 
-main {
-  overflow-y: hidden !important;
+.super-big {
+  font-size: 160px;
+  text-align: center;
+}
+
+.bg-landing {
+  object-fit: cover;
+  overflow: hidden;
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.paused {
+  animation-play-state: paused;
 }
 
 .logo {
