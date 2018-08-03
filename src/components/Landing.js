@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import $ from 'jquery'
 
+// Assets
 import bgLanding from '../assets/bg-landing.jpg'
 
 export default class Landing extends Component {
@@ -9,7 +10,7 @@ export default class Landing extends Component {
     document.title = 'UNfail'
   }
 
-  handleLoad(event) {
+  handleLoad(e) {
     $('.bg-landing').css('display','block')
     $('.paused').removeClass('paused')
   }
@@ -18,6 +19,7 @@ export default class Landing extends Component {
     const style = { minHeight: 350, position: 'relative' }
     return (
       <div className='full-size' style={ style }>
+        <div className='gradient'></div>
         <img src={ bgLanding } className='bg-landing' alt='bg'
           onLoad={ (e) => this.handleLoad(e) } />
         <div className='all-center text-center'>
