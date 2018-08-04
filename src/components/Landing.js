@@ -16,7 +16,7 @@ export default class Landing extends Component {
   }
 
   render() {
-    const style = { minHeight: 350, position: 'relative' }
+    const style = { minHeight: 380, position: 'relative' }
     return (
       <div className='full-size' style={ style }>
         <div className='gradient'></div>

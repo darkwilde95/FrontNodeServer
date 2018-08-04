@@ -10,7 +10,7 @@ export default class SignUp extends Component {
   }
 
   render() {
-    const style = { minHeight: 350, position: 'relative' }
+    const style = { minHeight: 500, position: 'relative' }
     const cardWidth = { width: 300 }
     const display = { display: 'block' }
     return (
