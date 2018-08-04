@@ -6,7 +6,7 @@ export default createStore((state, action) => {
     case 'LOG_IN':
       return {
         ...state,
-        session: !!localStorage.getItem('spToken')
+        session: true
       }
 
     case 'LOG_OUT':

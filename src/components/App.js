@@ -1,20 +1,35 @@
 import React, { Component } from 'react'
 
 // Assets
-// import axios from 'axios'
+import Store from '../js/store'
+import { authed_get } from '../js/request'
+import { login, logout } from '../js/actions'
 
-// components
+// Components
 import Header from './Header'
 
 export default class App extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      isLoaded: false
+    }
+  }
+
   componentDidMount() {
-    // Verificar si hay un token
-    if (!localStorage.getItem('token')) {
-
-    } else {
-      //Verificar si es válido
-
+    if (localStorage.getItem('token')) {
+      authed_get('/validate_token').then((res) => {
+        if (res.data.valid) {
+          Store.dispatch(login())
+        } else {
+          Store.dispatch(logout())
+          localStorage.removeItem('token')
+        }
+        this.setState({ isLoaded: true })
+      }).catch((error) => {
+        console.log(error)
+      })
     }
   }
 

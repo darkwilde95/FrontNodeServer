@@ -25,7 +25,6 @@ export default class RoutesBuilder extends Component {
   }
 
   render() {
-
     const { authed } = this.state
     const routes = Routes.map((route, index) => {
       if (!('path' in route)) {

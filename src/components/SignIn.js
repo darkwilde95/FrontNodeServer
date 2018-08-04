@@ -1,12 +1,38 @@
 import React, { Component } from 'react'
 
 // Assets
+import Store from '../js/store'
+import { post } from '../js/request'
+import { login } from '../js/actions'
 import bgSignin from '../assets/bg-signin.jpg'
 
 export default class SignIn extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      loggingIn: false
+    }
+  }
+
   componentDidMount() {
     document.title = 'Sign In'
+  }
+
+  handleSubmit(e) {
+    e.preventDefault()
+    this.setState({ loggingIn: true })
+    const credentials = {
+      email: document.getElementById('email').value,
+      password: document.getElementById('password').value
+    }
+    post('/login', credentials).then((res) => {
+      localStorage.setItem('token', res.data.jwt)
+      Store.dispatch(login())
+    }).catch((error) => {
+      console.log(error)
+      this.setState({ loggingIn: false })
+    })
   }
 
   render() {
@@ -23,17 +49,21 @@ export default class SignIn extends Component {
           </h1>
           <div className="card border-light transparent" style={ cardWidth }>
             <div className="card-body">
-              <h5 className="card-title text-white text-center"><b>Sign In</b></h5>
-              <form>
+              <h5 className="card-title text-white text-center">
+                <b>Sign In</b>
+              </h5>
+              <form onSubmit={ (e) => this.handleSubmit(e) }>
                 <div className='form-group'>
                   <label htmlFor='email' className='text-white'>Email</label>
-                  <input type='text' id='email' name='email'
-                    className='form-control border-light' placeholder='Type your email' />
+                  <input type='text' id='email' placeholder='Type your email'
+                    className='form-control border-light'/>
                 </div>
                 <div className='form-group'>
-                  <label htmlFor='password' className='text-white'>Password</label>
-                  <input type='password' id='password' name='password'
-                    className='form-control border-light' placeholder='Type your password' />
+                  <label htmlFor='password' className='text-white'>
+                    Password
+                  </label>
+                  <input type='password' placeholder='Type your password'
+                    id='password' className='form-control border-light' />
                 </div>
                 <div className='text-center'>
                   <button className='btn btn-outline-light'>Sign in</button>

@@ -1,3 +1,4 @@
-const baseURL = 'http://localhost:3000'
+const baseUrl = 'http://unfail.herokuapp.com'
+const apiUrl = 'http://unfail-api.herokuapp.com'
 
-export { baseURL }
+export { baseUrl, apiUrl }
