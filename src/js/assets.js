@@ -1,4 +1,4 @@
-const baseUrl = 'http://unfail.herokuapp.com'
-const apiUrl = 'http://unfail-api.herokuapp.com'
+const baseUrl = 'https://unfail.herokuapp.com'
+const apiUrl = 'https://unfail-api.herokuapp.com'
 
 export { baseUrl, apiUrl }
