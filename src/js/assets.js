@@ -1,4 +1,4 @@
-const baseUrl = 'https://unfail.herokuapp.com'
-const apiUrl = 'https://unfail-api.herokuapp.com'
+const baseUrl = process.env.BASE_URL || 'http://localhost:3001'
+const apiUrl = process.env.API_URL || 'http://localhost:3000/api'
 
 export { baseUrl, apiUrl }
